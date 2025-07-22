@@ -1,0 +1,16 @@
+[
+    {
+        "nazev": "Example s.r.o.",
+        "ico": "12345678",
+        "adresa": "Ulice 123, 100 00 Praha",
+        "zastoupena": "Jan Novák, jednatel",
+        "vedena": "Městský soud v Praze, oddíl C, vložka 123456"
+    },
+    {
+        "nazev": "Další Firma a.s.",
+        "ico": "87654321",
+        "adresa": "Jiná 456, 110 00 Praha",
+        "zastoupena": "Petr Novák, předseda představenstva",
+        "vedena": "Městský soud v Brně, oddíl B, vložka 654321"
+    }
+]
