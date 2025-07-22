@@ -33,7 +33,9 @@ def vyber_template():
         choices=[f"{idx + 1}: {template}" for idx, template in enumerate(templates)]
     ).ask()
     idx = int(vyber.split(':')[0]) - 1
-    return os.path.join(TEMPLATES_DIR, templates[idx])
+    mesic = questionary.text("Zadej měsíc pro název souboru (např. 07):").ask()
+    rok = questionary.text("Zadej rok pro název souboru (např. 2025):").ask()
+    return os.path.join(TEMPLATES_DIR, templates[idx]), mesic, rok
 
 def najdi_placeholdery(document):
     text = "\n".join([p.text for p in document.paragraphs])
@@ -63,11 +65,9 @@ def ziskej_hodnoty(placeholdery, firma):
             hodnoty[placeholder] = odpoved
     return hodnoty
 
-def uloz_smlouvu(document, hodnoty):
+def uloz_smlouvu(document, hodnoty, mesic, rok):
     jmeno = hodnoty.get("jmeno", "Nezname")
     prijmeni = hodnoty.get("prijmeni", "Nezname")
-    mesic = hodnoty.get("mesic_nastupu", datetime.now().strftime("%m"))
-    rok = hodnoty.get("rok_nastupu", datetime.now().strftime("%Y"))
     firma = hodnoty.get("firma_nazev", "Firma")
     nazev_smlouvy = hodnoty.get("nazev_smlouvy", "smlouva")
     
@@ -84,7 +84,7 @@ def uloz_smlouvu(document, hodnoty):
 def main():
     firmy = nacti_firmy()
     firma = vyber_firmu(firmy)
-    template_path = vyber_template()
+    template_path, mesic, rok = vyber_template()
     
     doc = Document(template_path)
     placeholdery = najdi_placeholdery(doc)
@@ -95,7 +95,7 @@ def main():
     hodnoty['nazev_smlouvy'] = nazev_smlouvy
     
     doc = nahrad_placeholdery(doc, hodnoty)
-    uloz_smlouvu(doc, hodnoty)
+    uloz_smlouvu(doc, hodnoty, mesic, rok)
 
 if __name__ == "__main__":
     main()
