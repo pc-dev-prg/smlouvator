@@ -16,6 +16,8 @@ brew install python
 python3 --version
 ```
 
+> Poznámka: Pro generování PDF verze smlouvy je nutné mít nainstalovaný Microsoft Word, protože aplikace používá `docx2pdf`, který vyžaduje Word na macOS a Windows.
+
 ### Windows
 1. Stáhni a nainstaluj Python z oficiálních stránek: https://www.python.org/downloads/windows/
 2. Během instalace zaškrtni možnost „Add Python to PATH“.
@@ -53,6 +55,28 @@ smlouvator/
 ```
 
 ## Instalace
+
+### Vytvoření virtuálního prostředí
+
+Doporučujeme spouštět aplikaci v samostatném virtuálním prostředí.
+
+1. Vytvoř virtuální prostředí:
+```bash
+python3 -m venv venv
+```
+2. Aktivuj prostředí:
+- macOS/Linux:
+```bash
+source venv/bin/activate
+```
+- Windows:
+```bash
+venv\Scripts\activate
+```
+3. Nainstaluj knihovny:
+```bash
+pip install -r requirements.txt
+```
 
 1. Ujisti se, že máš nainstalovaný Python 3.8+.
 2. Doporučeno: vytvoř si virtuální prostředí.
