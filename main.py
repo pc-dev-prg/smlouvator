@@ -6,6 +6,15 @@ from docx import Document
 import questionary
 from docx2pdf import convert
 
+# Přidej styl pro questionary
+from questionary import Style
+
+custom_style = Style([
+    ('qmark', 'fg:#ff9d00 bold'),
+    ('question', 'fg:#aaaaaa bold'),  # změna na šedou
+    ('answer', 'fg:#00ff00 bold'),
+])
+
 # Konstanty
 FIRMY_PATH = 'firmy.json'
 TEMPLATES_DIR = 'templates'
@@ -61,7 +70,11 @@ def ziskej_hodnoty(placeholdery, firma):
             key = placeholder.replace("firma_", "")
             hodnoty[placeholder] = firma.get(key, f"!!CHYBÍ {key}!!")
         else:
-            odpoved = questionary.text(f"Zadej hodnotu pro {placeholder}:").ask()
+            print(f"\033[93m>>> {placeholder}\033[0m")
+            odpoved = questionary.text(
+                "Zadej hodnotu:",
+                style=custom_style
+            ).ask()
             hodnoty[placeholder] = odpoved
     return hodnoty
 
