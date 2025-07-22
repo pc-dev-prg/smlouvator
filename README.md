@@ -2,6 +2,39 @@
 
 **Smlouvator** je jednoduchá Python aplikace pro generování smluv ve formátu Microsoft Word (.docx) na základě šablon s dynamickým doplňováním údajů.
 
+## Instalace Pythonu
+
+Aplikace vyžaduje Python ve verzi 3.8 nebo novější.
+
+### macOS
+1. Doporučujeme nainstalovat pomocí Homebrew:
+```bash
+brew install python
+```
+2. Ověř verzi příkazem:
+```bash
+python3 --version
+```
+
+### Windows
+1. Stáhni a nainstaluj Python z oficiálních stránek: https://www.python.org/downloads/windows/
+2. Během instalace zaškrtni možnost „Add Python to PATH“.
+3. Ověř instalaci otevřením `cmd` a spuštěním:
+```bash
+python --version
+```
+
+### Linux (Ubuntu/Debian)
+1. Instaluj Python pomocí apt:
+```bash
+sudo apt update
+sudo apt install python3 python3-pip
+```
+2. Ověř verzi:
+```bash
+python3 --version
+```
+
 ## Co Smlouvator umí
 - Vybrat typ smlouvy ze šablon (.docx)
 - Vybrat firmu ze seznamu firem uložených v `firmy.json`
